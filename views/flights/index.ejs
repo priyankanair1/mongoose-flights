@@ -13,12 +13,12 @@
   </thead>
   <tbody>
     <!-- Write the line of EJS to iterate over flights using forEach -->
-    <% flights.forEach(p => { %>
+    <% flights.forEach(f => { %>
       <tr>
-        <td><%= p.airline %></td>
-        <td><%= p.airport %></td>
-        <td><%= p.flightNo %></td>
-        <td><%= p.departs %></td>
+        <td><%= f.airline %></td>
+        <td><%= f.airport %></td>
+        <td><%= f.flightNo %></td>
+        <td><%= f.departs %></td>
       </tr>
     <!-- Close the forEach using EJS here -->
     <% }); %>
