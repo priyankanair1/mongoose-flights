@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<section>
+  <div>Airline:<%= flight.airline %></div>
+  <div>Airport:<%= flight.airport %></div>
+  <div>Flight No:<%= flight.flightNo %></div>
+  <div>Departs:<%= flight.departs %></div>
+ 
+</section>
+
+<br><br>
+<form  method="POST"
+  action="/flights/<%= flight._id %>/destinations">
+  <label>Destination:&nbsp;</label>
+
+  <label>Airport&nbsp;:
+    <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>        
+        </select>
+  </label>&nbsp;
+  <label>Arrival&nbsp;:
+    <input type="datetime-local" name="arrival"
+    value= "2023-06-01T08:30" />
+  </label>&nbsp;
+  </select>
+  <input type="submit" value="Add Destinations">
+</form>
+<% if(flight.destinations.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Airport</th>
+          <th>Arrival</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.destinations.sort((a,b) => a.arrival - b.arrival ).forEach(d => { %>
+          <tr>
+    
+            
+            <td><%= d.airport %></td>
+            <td><%= d.arrival %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% }else{ %>
+    <h5>Destination is not added</h5>
+    <% } %>
+
+
+
+
+<%- include('../partials/footer') %>
