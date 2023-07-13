@@ -24,6 +24,16 @@
     <!-- Close the forEach using EJS here -->
     <% }); %>
   </tbody>
+  <tbody>
+   
+    <% flights.forEach(t => { %>
+      <tr>
+        <td><%= t.seat %></td>
+        <td><%= t.price %></td>
+        <td><%= t.flight %></td>
+       
+    <% }); %>
+  </tbody>
 </table>
 
 <%- include('../partials/footer') %>

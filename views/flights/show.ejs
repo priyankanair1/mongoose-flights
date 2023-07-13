@@ -4,8 +4,7 @@
   <div>Airline:<%= flight.airline %></div>
   <div>Airport:<%= flight.airport %></div>
   <div>Flight No:<%= flight.flightNo %></div>
-  <div>Departs:<%= flight.departs %></div>
- 
+  <div>Departs:<%= flight.departs %></div> 
 </section>
 
 <br><br>
@@ -40,8 +39,6 @@
       <tbody>
         <% flight.destinations.sort((a,b) => a.arrival - b.arrival ).forEach(d => { %>
           <tr>
-    
-            
             <td><%= d.airport %></td>
             <td><%= d.arrival %></td>
           </tr>
@@ -52,7 +49,29 @@
     <h5>Destination is not added</h5>
     <% } %>
 
+    <a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a>
 
-
-
+    <% if(ticket.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Tickets</th>            
+          </tr>
+          <tr>
+            <th>Seat</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% ticket.forEach(t => { %>
+            <tr>
+              <td><%= t.seat %></td>
+              <td><%= t.price %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% }else{ %>
+      <h4>No Tickets found</h5>
+      <% } %>
 <%- include('../partials/footer') %>
