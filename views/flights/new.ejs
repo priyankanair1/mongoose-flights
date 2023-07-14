@@ -1,35 +1,41 @@
 <%- include('../partials/header') %>
+<div class="container-fluid bg-3 text-left">    
+  <h3 align="center">Add a Flight</h3><br>
+  <form action="/flights" method="POST">
+    <div class="container-main">
 
-<h2>Add a Flight</h2>
-<form action="/flights" method="POST">
-  <label>Airline:
-   
-    <select name="airline">
-      <option value="American">American</option>
-      <option value="Southwest">Southwest</option>
-      <option value="United">United</option>
+  <div class="form-group">
+    <label>Airline</label>
+    <select name="airline" class="form-control">
+          <option value="American">American</option>
+          <option value="Southwest">Southwest</option>
+          <option value="United">United</option>
+    </select>
+  </div>
+  <div class="form-group">
+      <label>Airport</label>
+      <select name="airport" class="form-control">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
       </select>
-  </label><br>
-  <label>Airport:
-   
-    <select name="airport">
-      <option value="AUS">AUS</option>
-      <option value="DFW">DFW</option>
-      <option value="DEN">DEN</option>
-      <option value="LAX">LAX</option>
-      <option value="SAN">SAN</option>
-      
-      </select>
-  </label><br>
-  <label>Flight No:
-    <input type="number" name="flightNo" min ="10" max= "9999"/>
-  </label><br>
-  <label>departs:
-    <input type="datetime-local" name="departs"
-    value= "2023-06-01T08:30" />
-</label><br>
-<button type="submit">Add flight</button>
-</form>
+  </div>
+  <div class="form-group">
+    <label>Flight No</label>
+      <input type="number" class="form-control" name="flightNo" min ="10" max= "9999"/>
+  </div>
+  <div class="form-group">
+    <label>Departs</label>
+    <input type="datetime-local" class="form-control" name="departs" value= "2023-06-01T08:30" />
+  </div>
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add flight</button>
+ </div>
+</div>
+
 <p><%= errorMsg %></p>
 
 <%- include('../partials/footer') %>

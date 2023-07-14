@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
-
-<h2>Flight List</h2>
-<table>
+<div class="container-main">
+<h3 align="center">Flight List</h3>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Airline</th>
@@ -23,17 +23,7 @@
       </tr>
     <!-- Close the forEach using EJS here -->
     <% }); %>
-  </tbody>
-  <tbody>
-   
-    <% flights.forEach(t => { %>
-      <tr>
-        <td><%= t.seat %></td>
-        <td><%= t.price %></td>
-        <td><%= t.flight %></td>
-       
-    <% }); %>
-  </tbody>
+  </tbody> 
 </table>
-
+</div>
 <%- include('../partials/footer') %>

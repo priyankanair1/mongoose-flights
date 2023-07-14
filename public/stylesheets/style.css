@@ -1,74 +1,15 @@
-* {
-  box-sizing: border-box;
-  font-family: Helvetica;
-  color: #424748;
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
-body {
-  margin: 0;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-    "nav"
-    "main"
-}
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.container-main {height: 500px}
 
-body > nav {
-  grid-area: nav;
-  background-color: #7f94c7;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 20px 0 30px;
-}
-
-
-body > main {
-  grid-area: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #1fcba0;
-  padding: 20px;
-  overflow-y: scroll;
-}
-
-body > main h1:first-child {
-  margin-bottom: 50px;
-}
-
-nav > a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-nav > a:hover:not(.active) {
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
   color: white;
-  background-color: #424748;
-}
-
-nav > a.active {
-  color: white;
-  cursor: default;
-}
-#show-page {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-}
-table {
-  font-size: 20px;
-}
-
-table thead th {
-  padding: 5px;
-  border-bottom: 2px solid #424748;
-}
-
-table td {
-  padding: 10px;
-  text-align: center;
+  padding: 15px;
 }

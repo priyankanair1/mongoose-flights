@@ -1,62 +1,77 @@
 <%- include('../partials/header') %>
 
-<section>
-  <div>Airline:<%= flight.airline %></div>
-  <div>Airport:<%= flight.airport %></div>
-  <div>Flight No:<%= flight.flightNo %></div>
-  <div>Departs:<%= flight.departs %></div> 
-</section>
-
-<br><br>
-<form  method="POST"
-  action="/flights/<%= flight._id %>/destinations">
-  <label>Destination:&nbsp;</label>
-
-  <label>Airport&nbsp;:
-    <select name="airport">
+<div class="container-fluid bg-3 text-left">
+  <h3 align="center">Flight Details</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <td><%= flight.airline %></td>
+      </tr>
+      <tr>
+        <th>Airport</th>
+        <td><%= flight.airport %></td>
+      </tr>
+      <tr>
+        <th>Flight No</th>
+        <td><%= flight.flightNo %></td>
+      </tr>
+      <tr>
+        <th>Departs</th>
+        <td><%= flight.departs %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+  <form  method="POST" action="/flights/<%= flight._id %>/destinations">
+    <label><h4>Destinations</h4></label>
+    <div class="form-group">
+      <label>Airport</label>
+      <select name="airport" class="form-control">
         <option value="AUS">AUS</option>
         <option value="DFW">DFW</option>
         <option value="DEN">DEN</option>
         <option value="LAX">LAX</option>
         <option value="SAN">SAN</option>        
-        </select>
-  </label>&nbsp;
-  <label>Arrival&nbsp;:
-    <input type="datetime-local" name="arrival"
-    value= "2023-06-01T08:30" />
-  </label>&nbsp;
-  </select>
-  <input type="submit" value="Add Destinations">
-</form>
-<% if(flight.destinations.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Airport</th>
-          <th>Arrival</th>
-        </tr>
-      </thead>
-      <tbody>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Arrival</label>  
+      <input type="datetime-local" name="arrival" value= "2023-06-01T08:30" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Add Destinations" class="btn btn-primary">
+    </div>
+  </form>
+  <% if(flight.destinations.length) { %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Airport</th>
+        <th>Arrival</th>
+      </tr>
+    </thead>
+    <tbody>
         <% flight.destinations.sort((a,b) => a.arrival - b.arrival ).forEach(d => { %>
           <tr>
             <td><%= d.airport %></td>
             <td><%= d.arrival %></td>
           </tr>
         <% }); %>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
   <% }else{ %>
-    <h5>Destination is not added</h5>
-    <% } %>
+  <h5>Destination is not added</h5>
+  <% } %>
 
-    <a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a>
 
+  <label><h4>Tickets</h4></label>
     <% if(ticket.length) { %>
-      <table>
+      <table class="table table-striped">
         <thead>
-          <tr>
-            <th colspan="2">Tickets</th>            
-          </tr>
           <tr>
             <th>Seat</th>
             <th>Price</th>
@@ -72,6 +87,9 @@
         </tbody>
       </table>
     <% }else{ %>
-      <h4>No Tickets found</h5>
+      <h4>No Tickets found</h4>
       <% } %>
+      <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary">New Ticket</a>
+      <br><br><br>
+</div>
 <%- include('../partials/footer') %>
